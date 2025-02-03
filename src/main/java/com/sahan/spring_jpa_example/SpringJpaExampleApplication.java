@@ -6,32 +6,41 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
+import java.util.List;
+import java.util.Optional;
+
 @SpringBootApplication
 public class SpringJpaExampleApplication {
 
 	public static void main(String[] args) {
 
 		ApplicationContext context = SpringApplication.run(SpringJpaExampleApplication.class, args);
-		 Student s1 = context.getBean(Student.class);
-		Student s2 = context.getBean(Student.class);
-		Student s3 = context.getBean(Student.class);
+//		 Student s1 = context.getBean(Student.class);
+//		Student s2 = context.getBean(Student.class);
+//		Student s3 = context.getBean(Student.class);
 
 		StudentRepo repo = context.getBean(StudentRepo.class);
 
-		s1.setRollNo(104);
-		s1.setName("Navin");
-		s1.setMarks(78);
+//		s1.setRollNo(104);
+//		s1.setName("Navin");
+//		s1.setMarks(78);
 
-		s2.setRollNo(105);
-		s2.setName("Amin");
-		s2.setMarks(88);
+//		s2.setRollNo(105);
+//		s2.setName("Amin");
+//		s2.setMarks(88);
+//
+//		s3.setRollNo(106);
+//		s3.setName("Gavin");
+//		s3.setMarks(85);
+//
+//		repo.save(s2);
+//		repo.save(s3);
 
-		s3.setRollNo(106);
-		s3.setName("Gavin");
-		s3.setMarks(85);
 
-		repo.save(s1);
 
+		Optional <Student> s = repo.getByNameAndMarks("Amin",78);
+
+		System.out.println(s.orElse(new Student(0,"No name",0)));
 	}
 
 

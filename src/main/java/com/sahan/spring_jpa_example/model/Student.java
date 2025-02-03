@@ -15,7 +15,14 @@ public class Student {
     private String name;
     private int marks;
 
+    public Student() {
+    }
 
+    public Student(int rollNo, String name, int marks) {
+        this.rollNo = rollNo;
+        this.name = name;
+        this.marks = marks;
+    }
 
     //getters and setters
     public int getRollNo() {
